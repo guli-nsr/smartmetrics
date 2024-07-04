@@ -1,13 +1,13 @@
-title:              Sharp Metrics by Guli
+title:              Smart Metrics
 email:              nasirova.guli@gmail.com
 description:        Econometric Analysis
 author:             Guli Nasirova
-baseurl:            ""
-url:                "https://guli-nasirova.github.io"
+baseurl:            "/smartmetrics"
+url:                "https://guli-nsr.github.io"
 
 # Social Profiles
 twitter_username:   
-github_username:    guli-nasirova
+github_username:    guli-nsr
 facebook_username:  
 instagram_username:  
 linkedin_username:  guli-nasirova-215254283
