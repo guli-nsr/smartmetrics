@@ -1,16 +1,16 @@
-title:              Dataslice
+title:              Smart Metrics
 email:              nasirova.guli@gmail.com
-description:        Analysis
-author:             Dataslice
+description:        Econometric Analysis
+author:             Guli Nasirova
 baseurl:            ""
-url:                "https://MetricsAggrABM.github.io"
+url:                "https://smartmetrics.github.io"
 
 # Social Profiles
 twitter_username:   
-github_username:    
+github_username:    guli-nasirova
 facebook_username:  
 instagram_username:  
-linkedin_username:
+linkedin_username:  guli-nasirova-215254283
 
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
