@@ -1,49 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
+    <title>Number Table</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        table {
+            border-collapse: collapse; /* Ensures there are no gaps between cells */
+            width: 50px; /* Sets the width of the table */
+            margin: auto; /* Centers the table horizontally */
         }
-        .nav {
-            margin-bottom: 20px;
+        td {
+            border-left: 1px solid black; /* Adds a border only to the left of each cell */
+            padding: 8px; /* Adds some padding for better readability */
+            text-align: center; /* Centers the text within the cells */
         }
-        .nav a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        article {
-            margin-bottom: 50px;
+        td:first-child {
+            border-left: none; /* Removes the left border from the first cell in each row */
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="#article1">John Doe</a>
-        <a href="#article2">Jane Smith</a>
-        <a href="#article3">Alice Johnson</a>
-    </div>
 
-    <article id="article1">
-        <h2>John Doe</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-    </article>
+<table>
+    <tr><td>1</td><td></td></tr>
+    <tr><td>2</td><td></td></tr>
+    <tr><td>3</td><td></td></tr>
+    <tr><td>4</td><td></td></tr>
+    <tr><td>5</td><td></td></tr>
+</table>
 
-    <article id="article2">
-        <h2>Jane Smith</h2>
-        <p>Suspendisse potenti. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.</p>
-    </article>
-
-    <article id="article3">
-        <h2>Alice Johnson</h2>
-        <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.</p>
-    </article>
 </body>
 </html>
