@@ -368,7 +368,7 @@ display: none;
   <li>Forecasting</li>
 </ol> </p>
 <p>This analysis is done for the didactic reasons to show how this procedure works in practice. Strictly speaking, the model identification stage must include: visual inspection, statistical tests for stationarity, examination of Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) plots and information criteria to identify the orders of autoregressive and moving average components. Here, I skip certain steps: I first plot raw and transformed data, from that I decide which filtered time series enters the subsequent steps. Importantly, assuming stationarity I precede to analysing sample ACF and sample PACF plots and utlising information criteria. </p>
-<p> For more details on time series analysis, you can refer to <cite>Time Series Analysis: Forecasting and Control</cite> by George E. P. Box and Gwilym M. Jenkins, 1976. Available on <a href="https://www.amazon.com/Time-Series-Analysis-Forecasting-Control/dp/0130607746">Amazon</a>.</p>
+<p> For more details on time series analysis, you can refer to <a href="https://www.amazon.com/Time-Series-Analysis-Forecasting-Control/dp/0130607746">Time Series Analysis: Forecasting and Control by George E. P. Box and Gwilym M. Jenkins, 1976</a>.</p>
 </div>
 <div id="Cleaning Up the Console and Setting the Working Directory" class="section level1">
 <h1>Cleaning Up the Console and Setting the Working Directory</h1>
@@ -446,10 +446,8 @@ from statsmodels.tsa.stattools import adfuller</code></pre>
     res = res_arp.resid
     sig_est = res_arp.cov_params()
     return alpha_est, sig_est, res, y_hat, res_arp</code></pre>
-<p>Fuction that calculates three information criteria: Akaike Information Criterion, Hannan-Quinn Information Criterion, Schwarz or Bayesian Information Criterion. You can find the links to the original article below:</p>
-<p><p><a href="https://link.springer.com/chapter/10.1007/978-1-4612-1694-0_16" class="uri">https://link.springer.com/chapter/10.1007/978-1-4612-1694-0_16</a></p></p>    
-<p><p><a href="https://www.jstor.org/stable/2985032" class="uri">https://www.jstor.org/stable/2985032</a></p></p>   
-<p><p><a href="https://www.jstor.org/stable/2958889" class="uri">https://www.jstor.org/stable/2958889</a></p></p> 
+<p>Fuction that calculates three information criteria: <a href="https://link.springer.com/chapter/10.1007/978-1-4612-1694-0_16"> Akaike Information Criterion</a>, <a href="https://www.jstor.org/stable/2985032">Hannan-Quinn Information Criterion</a>, <a href="https://www.jstor.org/stable/2958889">Schwarz or Bayesian Information Criterion</a>.
+</p>
 <pre class="python"><code>def info_crit(Y, maxLag):
     AIC = np.zeros(maxLag)
     HQ = np.zeros(maxLag)
@@ -478,10 +476,8 @@ from statsmodels.tsa.stattools import adfuller</code></pre>
 </div>
 <div id="export-data-from-csv-file" class="section level1">
 <h1>Exporting data from the csv file</h1>
-<p>In this analysis, I look into data generating process of the quarterly seasonally adjusted real Swiss GDP which runs from the first quarter of 1980 or the last quarter of 2021. The data obtained from the publicly available IMF databank (link below). It can be also downloaded from my personal github page.</p>
-<p><a href="https://data.imf.org/?sk=4c514d48-b6ba-49ed-8ab9-52b0c1a0179b&amp;sid=1390030341854" class="uri">https://data.imf.org/?sk=4c514d48-b6ba-49ed-8ab9-52b0c1a0179b&amp;sid=1390030341854</a></p>
-<p></p>
-<p>To extract data fromt the csv file use:</p>
+<p>In this analysis, I look into data generating process of the quarterly seasonally adjusted real Swiss GDP which runs from the first quarter of 1980 or the last quarter of 2021. The data obtained from the publicly available <a href="https://link.springer.com/chapter/10.1007/978-1-4612-1694-0_16"> IMF databank</a>. It can be also downloaded directly from my personal github page.</p>
+<p>Extracting data from the csv file:</p>
 <pre class="python"><code>csv_data = read_csv('swiss_gdp.csv')</code></pre>
 <p>To view columns' names and first 20 rows of data</p>
 <pre class="python"><code>csv_data.head(20)</code></pre>
