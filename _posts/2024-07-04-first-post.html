@@ -921,16 +921,17 @@ print('Breusch-Godfrey LM-Test for Residual Autocorrelation')
 print(' ')
 print('Breusch-Godfrey LMh-Test statistic at lag=4:', np.round(lm_h, 6)) 
 print('Breusch-Godfrey LM-Test p-value at lag=4:', np.round(1-stats.chi2.cdf(x=lm_h, df=h), 6))</code></pre>
-<pre><code>print('Breusch-Godfrey LM-Test for Residual Autocorrelation')
-print(' ')
-print('Breusch-Godfrey LMh-Test statistic at lag=4:', np.round(lm_h, 6)) 
-print('Breusch-Godfrey LM-Test p-value at lag=4:', np.round(1-stats.chi2.cdf(x=lm_h, df=h), 6))
-Breusch-Godfrey LM-Test for Residual Autocorrelation
+<pre><code>Breusch-Godfrey LM-Test for Residual Autocorrelation
  
 Breusch-Godfrey LMh-Test statistic at lag=4: 0.652873
 Breusch-Godfrey LM-Test p-value at lag=4: 0.957011</code></pre>
 <p>Here test statistic is 0.652873 and p-value is equal to 0.9570 (much larger than 0.05), so there is not enough evidence to reject the null hypothesis of no autocorrelation.</p>
 <h3>Breusch-Godfrey LM test / F version</h3>
+<p><i>F</i> version of the Breusch-Godfrey LM test has better properties in small samples, see <a href="https://www.amazon.com/Introduction-Econometrics-James-H-Stock/dp/0134461991" target="_blank">Chapter 11 Stock and Watson, 2020</a>. Here the test statistic is calculated using the same auxiliary model:</p>
+<p><span class="math display">\[
+  FLM_{h} &equals; \frac{R^{2}}{1-R^{2}}  &#215; \frac{T-p-h-1}{h} &#8776; &ensp; F(h, &ensp; T-p-h-1) \tag{2}
+\]</span></p>
+<p>Computing <span class="math inline">\(FLM_{h}\)</span> statistic using self-written function that utilises formula (2) for residual serial autocorrelation at lag 4.</p>  
 <pre class="python"><code>#calculating flm_h statistic and associated p-value
 num=(T-p-h-1)
 flm_h=(rsq*num)/((1-rsq)*h)
@@ -939,69 +940,36 @@ print('Breusch-Godfrey LM-Test for Residual Autocorrelation')
 print(' ')
 print('Breusch-Godfrey FLM-Test statistic at lag=4:', np.round(flm_h, 6))
 print(f'Breusch-Godfrey FLM-Test p-value at lag=4:', np.round(1-stats.f.cdf(flm_h, h, num), 6))</code></pre>
-<pre><code>print('Breusch-Godfrey LM-Test for Residual Autocorrelation')
-print(' ')
-print('Breusch-Godfrey FLM-Test statistic at lag=4:', np.round(flm_h, 6))
-print(f'Breusch-Godfrey FLM-Test p-value at lag=4:', np.round(1-stats.f.cdf(flm_h, h, num), 6))
-Breusch-Godfrey LM-Test for Residual Autocorrelation
+<pre><code>Breusch-Godfrey LM-Test for Residual Autocorrelation
  
 Breusch-Godfrey FLM-Test statistic at lag=4: 0.157672
 Breusch-Godfrey FLM-Test p-value at lag=4: 0.959268</code></pre>
-
-<p>for the sake of completeness the autocorrelation at lags 3, 5, 6, 7 were checked, in all of the cases the null hypotheses cannot be rejected see table 6</p>
-<p style="color: red;"><strong>CHANGE THE TEXT HERE</strong></p>
+<p>The test statistic is equal to 0.1577 and associated p-value is 0.9593, therefore the null hypothesis of no serial correlation again cannot be rejected.</p>
+<p>For the sake of completeness the autocorrelation at lags 3, 5, 6, 7 were checked using in-build function, in all of the cases the null hypotheses cannot be rejected, see below</p>
 <pre class="python"><code>#calculating LM statistic and p value using in-build package for lag=3,5,6,7
 _, _, _, _, for_lm =est_arp(y_t, 1, 1, 0)
 print('Breusch-Godfrey LM-Test for Residual Autocorrelation (in-build function)')
 print(' ')
 print('Breusch-Godfrey LM-Test statistic for lag=3:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=3)[0], 6)) 
 print('Breusch-Godfrey LM-Test p-value for lag=3:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=3)[1], 6))
-
 print('Breusch-Godfrey LM-Test statistic for lag=5:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=5)[0], 6)) 
 print('Breusch-Godfrey LM-Test p-value for lag=5:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=5)[1], 6))
- 
 print('Breusch-Godfrey LM-Test statistic for lag=6:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=6)[0], 6)) 
 print('Breusch-Godfrey LM-Test p-value for lag=6:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=6)[1], 6))
-
- 
 print('Breusch-Godfrey LM-Test statistic for lag=7:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=7)[0], 6)) 
 print('Breusch-Godfrey LM-Test p-value for lag=7:', np.round(dg.acorr_breusch_godfrey(for_lm, nlags=7)[1], 6))
 </code></pre>
-<table style="border-collapse: collapse; width: 70%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 6</caption>
-  <tr  align="left">
-    <td style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: none; padding: 8px;">Breusch-Godfrey LM-Test statistic for lag=3:</td>
-    <td style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: none; padding: 8px;">0.6052</td>
-  </tr>
-  <tr align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test p-value for lag=3:</td>
-    <td style="border: 1px solid black;  padding: 8px;">0.8952</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; border-bottom: none; padding: 8px;">Breusch-Godfrey LM-Test statistic for lag=5:</td>
-    <td style="border: 1px solid black; border-bottom: none; padding: 8px;">0.6649</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test p-value for lag=5:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.9848</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test statistic for lag=6:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.8380</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test p-value for lag=6:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.9910</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test statistic for lag=7:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.8380</td>
-  </tr>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Breusch-Godfrey LM-Test p-value for lag=7:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.9970</td>
-  </tr>
-</table>
+<pre><code>Breusch-Godfrey LM-Test for Residual Autocorrelation (in-build function)
+ 
+ Breusch-Godfrey LM-Test statistic for lag=3: 0.605173
+ Breusch-Godfrey LM-Test P-value for lag=3: 0.895247
+ Breusch-Godfrey LM-Test statistic for lag=5: 0.664913
+ Breusch-Godfrey LM-Test P-value for lag=5: 0.984839
+ Breusch-Godfrey LM-Test statistic for lag=6: 0.838045
+ Breusch-Godfrey LM-Test P-value for lag=6: 0.991015
+ Breusch-Godfrey LM-Test statistic for lag=7: 0.838091
+ Breusch-Godfrey LM-Test P-value for lag=7: 0.997036</code></pre>
+
 <p><strong><i>The results of diagnostic tests for ARCH effects</i></strong></p>
 <p>The null hypothesis of ARCH-LM test states that there is no serial autocorrelation in the squared returns. Here the autoregressive model of order q of squared residuals is set. We are testing whether all slope parameters of this regression are simultaneously statistically different from zero. The test statistic (number of observations multiplied by the <span class="math inline">\(R^2\)</span> statistic of the autoregressive model) is asymptotically chi-squared distributed with q df. We can see that p-value here is very large. So we do not have enough evidence to reject the null hypothesis of no ARCH effects.</p>
 <pre class="python"><code>#%%conduct diagnostic tests for ARCH effects 
