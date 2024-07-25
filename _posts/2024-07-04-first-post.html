@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GDP Analysis for Switzerland"
-subtitle: "Preforcasting Procedure / Exploration Stage"
+subtitle: "Pre-Forcasting Procedure / Exploration Stage"
 background: '/img/posts/02.jpg'
 ---
 
@@ -524,7 +524,7 @@ figure_1.savefig('Figure_1.jpg')</code></pre>
 <p>Apart from the log transformation, other time series transformation technics can be very informative. In this analysis, I look into the annualized quarter-over-quarter growth rates and annual growth rate (both in percentage). I first give definitions of both filters, then a short analyses of the results.</p>
 <p>The annualized growth rate in <span class="math inline">\(\%\)</span> is <span class="math inline">\(400 &#215; &#8710; y_{t}\)</span>, where <span class="math inline">\( &#8710; y_{t}  &#8788; y_{t} &minus; y_{t&minus;1} \)</span>.</p>
 <p>The annual growth rate in <span class="math inline">\(\%\)</span>  is <span class="math inline">\(100 &#215; &#8710;_{4} y_{t}\)</span>, where <span class="math inline">\(&#8710;_{s} y_{t}  &#8788; y_{t} &minus; y_{t&minus;s}\)</span>.</p>
-<p>Code of transformations applied to the data are as follows:</p>
+<p>Applying transformations to the data:</p>
 <pre class="python"><code>#the annualized quarter-over-quarter growth rates of the series in %
 pandemic_y_t=400*(ln_pandemic_x[1:]-ln_pandemic_x[:-1])
 
@@ -649,65 +649,20 @@ print('{:<12s} {:^8.4f} {:^16.4f} {:^8.4f}'.format('7.0', cr_results[6,0],
       cr_results[6,1], cr_results[6,2]))
 print('{:<12s} {:^8.4f} {:^16.4f} {:^8.4f}'.format('8.0', cr_results[7,0],
       cr_results[7,1], cr_results[7,2]))</code></pre>
-<p>In this analysis I calculated criteria values for eight lags, the results are presented in Table 1. According to all three information criteria, the suggested lag order for the autoregressive model is 1.</p>
-<table style="border-collapse: collapse; border: 1px solid black; width: 100%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 1</caption>
-  <tr bgcolor="lightgrey" align="center">
-    <th style="border: 1px solid black; padding: 8px;"></th>
-    <th style="border: 1px solid black; padding: 8px;">AIC</th>
-    <th style="border: 1px solid black; padding: 8px;">HQ</th>
-    <th style="border: 1px solid black; padding: 8px;">SC</th>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding-top: 8px; padding-bottom: 1px;">lag=1.0</td>
-    <td style="border-right: 1px solid black; padding-top: 8px; padding-bottom: 1px;">1.8630</td>
-    <td style="border-right: 1px solid black; padding-top: 8px; padding-bottom: 1px;">1.9030</td>
-    <td style="border-right: 1px solid black; padding-top: 8px; padding-bottom: 1px;">1.8793</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=2.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.8735</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9335</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9190</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=3.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.8865</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9664</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9190</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=4.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.8993</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9992</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9399</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=5.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9125</td>
-    <td style="border-right: 1px solid black; padding: 1px;">2.0324</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9612</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=6.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9257</td>
-    <td style="border-right: 1px solid black; padding: 1px;">2.0656</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9825</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding: 1px;">lag=7.0</td>
-    <td style="border-right: 1px solid black; padding: 1px;">1.9354</td>
-    <td style="border-right: 1px solid black; padding: 1px;">2.0952</td>
-    <td style="border-right: 1px solid black; padding: 1px;">2.0003</td>
-  </tr>
-  <tr align="center">
-    <td style="border-right: 1px solid black; padding-top: 1px; padding-bottom: 8px;">lag=8.0</td>
-    <td style="border-right: 1px solid black; padding-top: 1px; padding-bottom: 8px;">1.9327</td>
-    <td style="border-right: 1px solid black; padding-top: 1px; padding-bottom: 8px;">2.1125</td>
-    <td style="border-right: 1px solid black; padding-top: 1px; padding-bottom: 8px;">2.0057</td>
-  </tr>
-</table>
-</div>
+<pre><code>--------------------------------------------------
+               Order Selection Criteria                
+--------------------------------------------------
+lag              AIC           HQ           SC     
+--------------------------------------------------
+1.0           1.8630       1.9030       1.8793 
+2.0           1.8735       1.9335       1.9190 
+3.0           1.8865       1.9664       1.9190 
+4.0           1.8993       1.9992       1.9399 
+5.0           1.9125       2.0324       1.9612 
+6.0           1.9257       2.0656       1.9825 
+7.0           1.9354       2.0952       2.0003 
+8.0           1.9327       2.1125       2.0057 </code></pre>
+<p>In this analysis I calculated criteria values for eight lags. According to all three information criteria, the suggested lag order for the autoregressive model is 1.</p>
 <div id="2. Model Estimation" class="section level1">
 <h1>2. Model Estimation</h1>
 <i><h2>Estimating AR(1) Model Using LS</i></h2>
@@ -719,14 +674,11 @@ print('{:<12s} {:^8.4f} {:^16.4f} {:^8.4f}'.format('8.0', cr_results[7,0],
   y_{t} &equals; c &plus; &alpha;_{1} y_{t &minus; 1} + &epsilon;_{t} &ensp;  \text{with} &ensp;  &epsilon;_{t} &#8764; WN 
 \]</span></p>
 <p>I estimated this model using least-squares method. For the proof of the consistency of estimators and normality of asymptotic distributions together with assumptions needed for these results see <a href="https://www.amazon.com/Time-Series-Analysis-James-Hamilton/dp/0691042896">Time Series, Analysis, Section 8.2, Hamilton (1994)</a>. Usual statistical methods can be used here. If we look at t-test results both estimated parameters are statistically significant.</p>
-<p>Estimating parameters and report the results</p>
 <pre class="python"><code># Estimate AR(1) for y_t, using the LS method and report the estimated parameters
-
 #T for AR(1)
 date1=date[1:]
 ar1_param, sig_est, res, _, _ =est_arp(y_t, 1, 1, 0)
 asym_se=np.array([np.sqrt(sig_est[0,0]), np.sqrt(sig_est[1,1]) ])
-
 t_score_ar1=np.array([ar1_param[0]/asym_se[0], ar1_param[1]/asym_se[1]])
 dash = '-' * 65
 print(dash)
@@ -742,30 +694,14 @@ print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('alpha_1',  ar1_par
 #sigma_hat^2=(1/(T-p-1))*sum(epsilon_hat^2) which is different from the likelihood 
 #estimate of sigma^2, where denominator consists only of T.
 </code></pre>
-<table style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 2</caption>
-  <tr bgcolor="lightgrey" align="center">
-    <th style="border: 1px solid black; padding: 8px;">Coefficient</th>
-    <th style="border: 1px solid black; padding: 8px;">Point Estimate</th>
-    <th style="border: 1px solid black; padding: 8px;">Asymptotic SE</th>
-    <th style="border: 1px solid black; padding: 8px;">t-score</th>
-    <th style="border: 1px solid black; padding: 8px;">p-value</th>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(c\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">1.1074</td>
-    <td style="border: 1px solid black; padding: 8px;">0.2386</td>
-    <td style="border: 1px solid black; padding: 8px;">4.6407</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(&alpha;_{1}\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">0.3724</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0743</td>
-    <td style="border: 1px solid black; padding: 8px;">5.0150</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-</table>
+<pre><code>-----------------------------------------------------------------
+AR(1) Parameter Estimates and Asymptotic SEs (LS method)
+-----------------------------------------------------------------
+Coefficient  Point Estimate Asymptotic SE   t-score      p-value   
+-----------------------------------------------------------------
+c             1.1074       0.2386           4.6407       0.0000 
+alpha_1       0.3724       0.0743           5.0150       0.0000 </code></pre>
+<p>If we look at the estimates, all of them are statistically significant. However, at this stage, it is too early to draw conclusions if this model is suitalbe for this time series.</p>
 </div>
 <div id="3. Model Validation" class="section level1">
 <h1>3. Model Validation</h1>
@@ -777,9 +713,7 @@ print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('alpha_1',  ar1_par
     <li>Plots of Residual ACFs and PACFs</li>
   </ul>
   <li>Diagnostic Test of Residuals</li>
-  <li>Stability Analysis</li>
 </ul></p>
-<p style="color: red;"><strong>CHANGE THE TEXT HERE</strong></p>
 <i><h2>Descriptive Analysis of Residuals</h2></i>
 <h3>Residual Plots</h3>
 <p>First, we try to detect possible model defects using plots of standardized residuals. Why standardized residuals? If the residuals are normally distributed, their standardized version should behave as standard normal quantity, i.e., 95% of them should be within a &plusmn;2 band around zero. That is why, we plot standardized residuals and just count how many of them are outside of this bound, in other words, how many "hits" there are. If the number is greater than 5% of the sample size, this is a clear indication that 1. residuals are not normally distributed or 2. presence of other problems (outlier, inhomogenous variances, structural breaks).</p>
@@ -926,7 +860,7 @@ print('Breusch-Godfrey LM-Test p-value at lag=4:', np.round(1-stats.chi2.cdf(x=l
 Breusch-Godfrey LMh-Test statistic at lag=4: 0.652873
 Breusch-Godfrey LM-Test p-value at lag=4: 0.957011</code></pre>
 <p>Here test statistic is 0.652873 and p-value is equal to 0.9570 (much larger than 0.05), so there is not enough evidence to reject the null hypothesis of no autocorrelation.</p>
-<h3>Breusch-Godfrey LM test / F version</h3>
+<h3>Breusch-Godfrey LM test / F version for Serial Autocorrelation </h3>
 <p><i>F</i> version of the Breusch-Godfrey LM test has better properties in small samples, see <a href="https://www.amazon.com/Introduction-Econometrics-James-H-Stock/dp/0134461991" target="_blank">Chapter 11 Stock and Watson, 2020</a>. Here the test statistic is calculated using the same auxiliary model:</p>
 <p><span class="math display">\[
   FLM_{h} &equals; \frac{R^{2}}{1-R^{2}}  &#215; \frac{T-p-h-1}{h} &#8776; &ensp; F(h, &ensp; T-p-h-1) \tag{2}
@@ -969,84 +903,55 @@ print('Breusch-Godfrey LM-Test p-value for lag=7:', np.round(dg.acorr_breusch_go
  Breusch-Godfrey LM-Test P-value for lag=6: 0.991015
  Breusch-Godfrey LM-Test statistic for lag=7: 0.838091
  Breusch-Godfrey LM-Test P-value for lag=7: 0.997036</code></pre>
-
-<p><strong><i>The results of diagnostic tests for ARCH effects</i></strong></p>
-<p>The null hypothesis of ARCH-LM test states that there is no serial autocorrelation in the squared returns. Here the autoregressive model of order q of squared residuals is set. We are testing whether all slope parameters of this regression are simultaneously statistically different from zero. The test statistic (number of observations multiplied by the <span class="math inline">\(R^2\)</span> statistic of the autoregressive model) is asymptotically chi-squared distributed with q df. We can see that p-value here is very large. So we do not have enough evidence to reject the null hypothesis of no ARCH effects.</p>
-<pre class="python"><code>#%%conduct diagnostic tests for ARCH effects 
-
-arch_lm = dg.het_arch(res, nlags=8)
-print('ARCH-LM-test-stat in-build:', arch_lm[0])
-print('ARCH-LM-pval in-build:', arch_lm[1])
-
-#as a check up: function that takes takes in residuals and produces arch_lm(4) test statistic and 
-#p-value
-
-def archLM(Y, q):
-    res_sq=Y**2
-    T=len(Y)
-    X = np.zeros(shape=(T, q+1))
-    X[:,0] = np.array(np.ones(T))
-    mean_of_wn=np.zeros(q)
-    for ii in range(1, q+1):
-        X[:,ii] = np.append(mean_of_wn[0:ii], res_sq[:-ii])
-    model_arch=sm.OLS(res_sq, X).fit()
-    rsq_arch=model_arch.rsquared
-    arch_lm2=T*rsq_arch
-    pvalue=1-stats.chi2.cdf(x=arch_lm2, df=q)
-    return arch_lm2, pvalue
-
-print('ARCH-LM-stat, self written fucntion:', np.round(archLM(res, 8)[0], 6))
-print('ARCH-LM-p-value, self written fucntion:', np.round(archLM(res, 8)[1], 6))</code></pre>
-<table style="border-collapse: collapse; width: 70%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 7</caption>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">ARCH-LM test statistic:</td>
-    <td style="border: 1px solid black; padding: 8px;">0.8463</td>
-  </tr>
-  <tr align="left">
-    <td style="border: 1px solid black; padding: 8px;">ARCH-LM test p-value:</td>
-    <td style="border: 1px solid black;  padding: 8px;">0.9990</td>
-  </tr>
-</table>
+<h3>ARCH-LM Test for Autoregressive Conditional Heteroskedasticity</h3>
+<p><a href="https://www.jstor.org/stable/1912773" target="_blank">Engle, 1982</a> proposed to test for neglected autoregressive conditional heteroskedasticity (ARCH) by running:</p>
+<p><span class="math display">\[
+  \hat{&epsilon;}^{2}_{t} &equals; &beta;_{0} + &beta;_{1} \hat{&epsilon;}^{2}_{t-1} + \ldots + &beta;_{q} \hat{&epsilon;}^{2}_{t-q} + e_{t} \tag{3}
+\]</span></p>
+<p><span class="math inline">\(q\)</span> here is number of lags that enters (3). Essentially, we check for correlation in squared residuals <span class="math inline">\(\hat{&epsilon;}^{2}_{t}\)</span>, i.e., we test the null hypothesis of all slope parameters of this regression being simultaneously statistically different from zero:</p>
+<div class="math-display-container">
+    <span class="math display">
+        \[
+        \begin{aligned}
+          H_{0}: &\; &beta;_{1} = \ldots = &beta;_{q} = 0 &ensp; \text{vs.} \\
+          H_{1}: &\; &beta;_{1} &#8800;0 &ensp; \text{or} \ldots \text{or} &ensp;  &beta;_{q} &#8800;0
+        \end{aligned}
+        \]
+    </span>
 </div>
-<div id="Test Residuals for Normality" class="section level1">
-<h1>Test Residuals for Normality</h1>
-<p><strong><i>Jarque-Bera test for non-normality:</i></strong></p>
-<p>not sure if I need to add formulas here</p>
+<p>Again, the test statistic is equal to number of observations  <span class="math inline">\(T\)</span> multiplied by the <span class="math inline">\(R^2\)</span> statistic of the autoregressive model (3). It is asymptotically chi-squared distributed with <span class="math inline">\(q\)</span> degrees of freedom.</p>
+<p><span class="math display">\[ 
+  ARCH_{LM}(q) &equals; T &#215; R^{2}
+\]</span></p>
+<p>We reject the null hypothesis if <span class="math inline">\(ARCH_{LM}(q) &#62; &#967;^{2}(q)_{1-&alpha;}\)</span>, in this example, I tested for <span class="math inline">\(q=8\)</span></p>
+<pre class="python"><code>#%%conduct diagnostic tests for ARCH effects 
+arch_lm = dg.het_arch(res, nlags=8)
+print('ARCH-LM-test-stat in-build:', np.round(arch_lm[0],4))
+print('ARCH-LM-pval in-build:', np.round(arch_lm[1], 4))</code></pre>
+<pre><code>ARCH-LM-test-stat in-build: 0.8463
+ARCH-LM-pval in-build: 0.999</code></pre>
+<p>We can see that p-value here is very large. So we do not have enough evidence to reject the null hypothesis of no ARCH effects.</p>
+<h3>Jarque-Bera Test for Normality</h3>
 <pre class="python"><code>#Jarque-Bera test for non-normality
-
 jarque_bera_test = stats.jarque_bera(stand_res)
-
 print('Jarque-Bera test for non-normality (in-build function)')
 print(' ')
 print('Jarque-Bera Test statistic:', np.round(jarque_bera_test.statistic, 6)) 
 print('Jarque-Bera Test P-value:', np.round(jarque_bera_test.pvalue, 6))</code></pre>
-<p>Here we are testing null hypothesis that the standardized residuals of the original AR(1) model are normally distributed, i.e. we are testing if residuals’ third moment is statistically different from zero and the forth moment is statistically different from 3 (standard normal distribution’s skewness and kurtosis). Under the null hypothesis the test statistic is asymptotically chi-squared distributed with 2 df. Interestingly, the p-value is very small so we reject the null hypothesis of normality. See Table 8</p>
-<table style="border-collapse: collapse; width: 70%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 8</caption>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Jarque-Bera Test statistic:</td>
-    <td style="border: 1px solid black; padding: 8px;">261.2136</td>
-  </tr>
-  <tr align="left">
-    <td style="border: 1px solid black; padding: 8px;">Jarque-Bera Test P-value:</td>
-    <td style="border: 1px solid black;  padding: 8px;">0.0000</td>
-  </tr>
-</table>
-</div>
-<div id="The overall results of the Analysis of The Residuals Stage" class="section level1">
-<h1>The overall results of the Analysis of The Residuals Stage</h1>
-<p>When we analyzed pictures 1.3 and 1.4 we stated that it can be that 1. there is some remaining correlation in the residuals or 2. residuals might be non-normally distributed. None of the conducted test showed the evidence of presence of serial correlation. Therefore, the “problem” most probably is in non-normality of the residuals. But normality of the residuals is a bit of a strong restriction/assumption and taking into consideration that all information criteria indicated lag one as preferable, disregarding AR(1) all together would not be sensible decision and some other alterations might be implemented to buttress the model. Let us try to solve the "problem" of non-normality of the residuals by adding to the model at-hand a dummy variable, that will count for the 2008 Financial Crisis and test for normality of residuals again.</p>
+<pre><code>Jarque-Bera test for non-normality (in-build function)
+ 
+ Jarque-Bera Test statistic: 261.213645
+ Jarque-Bera Test P-value: 0.0</code></pre>
+<p>Here we test the null hypothesis of the standardized residuals being normally distributed, i.e. we test if residuals’ third moment is statistically different from zero and the forth moment is statistically different from 3 (standard normal distribution’s skewness and kurtosis). Interestingly, the p-value here is very small so we reject the null hypothesis of normality.</p>
+<h2>The Overall Assessment of the Model Validation Stage</h2>
+<p>When I analyzed plots of standardized residuals and residual ACF and PACF, I stated that the problem can be 1. there is some remaining correlation in the residuals or 2. residuals might be non-normally distributed. None of the conducted test showed the evidence of presence of serial correlation. Therefore, the “problem” most probably is in non-normality of the residuals. But normality of the residuals is a bit of a strong restriction/assumption and taking into consideration that all information criteria indicated lag one as preferable, disregarding AR(1) all together would not be sensible decision and some other alterations might be implemented to buttress the model. Let us try to solve the "problem" of non-normality of the residuals by adding to the model at-hand a dummy variable, that will count for the 2008 Financial Crisis and test for normality of residuals again.</p>
 </div>
 <div id="Estimating AR(1) model with Intercept and Dummy Variable for 2008 Financial Crisis" class="section level1">
 <h1>Estimating AR(1) model with Intercept and Dummy Variable for 2008 Financial Crisis</h1>
 <pre class="python"><code>#create an impulse dummy to capture an unusually large residual in 2008Q4
 dummy=np.zeros(len(date1))
 dummy[113]=1
-
 ar1_d, sig_dummy, res_dummy, _, for_lm2 =est_arp(y_t, 1, 1, 1)
-
-
 asym_se_dummy=np.array([np.sqrt(sig_dummy[0,0]), np.sqrt(sig_dummy[1,1]), np.sqrt(sig_dummy[2,2]) ])
 t_score_dummy=np.array([ar1_d[0]/asym_se_dummy[0], ar1_d[1]/asym_se_dummy[1], ar1_d[2]/asym_se_dummy[2]])
 pvalues_ar1dummy=np.array([np.round(stats.t.sf(abs(t_score_dummy[0]), df=159)*2, 4), 
@@ -1065,39 +970,16 @@ print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('alpha_1',  ar1_d[1
 print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('dummy',  ar1_d[2], 
                                                              asym_se_dummy[2], t_score_dummy[2], pvalues_ar1dummy[2])) 
 </code></pre>
-<p>Estimation results of AR(1) model with dummy for 2008Q4 are presented in Table 9.</p>
-<table style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 9</caption>
-  <tr bgcolor="lightgrey" align="center">
-    <th style="border: 1px solid black; padding: 8px;">Coefficient</th>
-    <th style="border: 1px solid black; padding: 8px;">Point Estimate</th>
-    <th style="border: 1px solid black; padding: 8px;">Asymptotic SE</th>
-    <th style="border: 1px solid black; padding: 8px;">t-score</th>
-    <th style="border: 1px solid black; padding: 8px;">p-value</th>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(c\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">1.1929</td>
-    <td style="border: 1px solid black; padding: 8px;">0.2133</td>
-    <td style="border: 1px solid black; padding: 8px;">5.5912</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(&alpha;_{1}\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">0.3757</td>
-    <td style="border: 1px solid black; padding: 8px;">       0.0663</td>
-    <td style="border: 1px solid black; padding: 8px;">           5.6700</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(dummy\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">-14.4133      </td>
-    <td style="border: 1px solid black; padding: 8px;">2.2527          </td>
-    <td style="border: 1px solid black; padding: 8px;">-6.3983</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-</table>
-<p>Testing residuals of this model for normality:</p>
+<pre><code>-----------------------------------------------------------------
+                AR(1) model with dummy                 
+-----------------------------------------------------------------
+Coeff.         Paramet.     Asym. SE     t-score      p-value   
+-----------------------------------------------------------------
+c             1.1929       0.2133           5.5912       0.0000 
+alpha_1       0.3757       0.0663           5.6700       0.0000 
+dummy        -14.4133      2.2527          -6.3983       0.0000 </code></pre>
+<p>All point estimates of the AR(1)’s parameters did not change much and are statistically significant. Importantly, dummy's estimated parameter not only statistically different from zero, but substantially big while being negative.</p>
+<p>Let us test residuals of this model for normality and see if adding dummy variable solved the problem:</p>
 <pre class="python"><code>#conduct test for non-normality 
 stand_res_dummy=stand(res_dummy)
 jarque_bera_test_dummy = stats.jarque_bera(stand_res_dummy)
@@ -1107,26 +989,13 @@ print(' ')
 print('Jarque-Bera Test statistic:', np.round(jarque_bera_test_dummy.statistic, 6)) 
 print('Jarque-Bera Test P-value:', np.round(jarque_bera_test_dummy.pvalue, 6)) 
 </code></pre>
-<p>Results of the tests for normality of the residuals of the AR(1) model with intercep and dummy are presented in Table </p>
-<table style="border-collapse: collapse; width: 70%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 10</caption>
-  <tr  align="left">
-    <td style="border: 1px solid black; padding: 8px;">Jarque-Bera Test statistic:</td>
-    <td style="border: 1px solid black; padding: 8px;">1.0261</td>
-  </tr>
-  <tr align="left">
-    <td style="border: 1px solid black; padding: 8px;">Jarque-Bera Test P-value:</td>
-    <td style="border: 1px solid black;  padding: 8px;">0.5987</td>
-  </tr>
-</table>
-<p>sonuclari from Table 10 yorumla</p>
-<p>Here we are including dummy variable to control the consequences of the 2008 great financial crisis, which only improved our estimation results: the only “problem” we had with pure AR(1) model is non-normality of the residuals, including dummy as a regressor “fixed” this problem. The p-value of Jarque-Bera Test statistic is greater than 0.05, so we cannot reject the null hypothesis of normality. Moreover, all point estimates of the AR(1)’s parameters did not change much and they are still statistically significant.</p> 
-<p>Also, as can be seen in table 4 p-value of the dummy variable shows that dummy variable is statistically different from zero, so we might even draw some conclusions about the impact of this crisis.</p>
-<p>Let add one more lag and try different estimation method and see what the results show</p>
+<pre><code>Jarque-Bera test for non-normality (in-build function)
+Jarque-Bera Test statistic: 1.026122
+Jarque-Bera Test P-value: 0.59866</code></pre>
+<p>The p-value of Jarque-Bera Test statistic is greater than 0.05, so we cannot reject the null hypothesis of normality.AR(1) with intercept and dummy variable for the 2008 Financial Crisis model looks quite reasonable. However, let us increase the order of the autoregressive model to 2 and see if it adds any useful information. This time, I will be using the Maximum Likelihood Estimation (MLE) technique for demonstrative purposes.</p>
 </div>
-<div id="Estimating AR(2) model Using Different Estimation Method" class="section level1">
-<h1>Estimating AR(2) model Using Different Estimation Method</h1>
-<p>here we use exact Maximum Likelihood (ML) method</p>
+<div id="Estimating AR(2) model Using MLE" class="section level1">
+<h1>Estimating AR(2) model Using MLE</h1>
 <pre class="python"><code>#Estimate AR(2) the model using exact ML and report the MLE estimates of c, alpha1, alpha2, 
 #and sigma_squared together with their asymptotic standard errors
 def MLE(Y) :
@@ -1180,41 +1049,20 @@ print(dash)
 print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('c',  ar_2_model[0][0], ar_2_model[1][0], t_score_mle[0], stats.t.sf(abs(t_score_mle[0]), df=159)*2))
 print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('alpha_1', ar_2_model[0][1], ar_2_model[1][1], t_score_mle[1], stats.t.sf(abs(t_score_mle[1]), df=159)*2))
 print('{:<12s} {:^8.4f} {:^16.4f} {:^16.4f} {:^8.4f}'.format('alpha_2', ar_2_model[0][2], ar_2_model[1][2], t_score_mle[2], stats.t.sf(abs(t_score_mle[2]), df=159)*2))</code></pre>
-<p>The results are in Table 11</p>
-<table style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <caption style="caption-side: top; font-weight: bold; padding: 10px;">Table 11</caption>
-  <tr bgcolor="lightgrey" align="center">
-    <th style="border: 1px solid black; padding: 8px;">Coefficient</th>
-    <th style="border: 1px solid black; padding: 8px;">Point Estimate</th>
-    <th style="border: 1px solid black; padding: 8px;">Asymptotic SE</th>
-    <th style="border: 1px solid black; padding: 8px;">t-score</th>
-    <th style="border: 1px solid black; padding: 8px;">p-value</th>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(c\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;"> 1.1548      </td>
-    <td style="border: 1px solid black; padding: 8px;">0.2555           </td>
-    <td style="border: 1px solid black; padding: 8px;">4.5205</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(&alpha;_{1}\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">0.3909</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0796</td>
-    <td style="border: 1px solid black; padding: 8px;">4.9086</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0000</td>
-  </tr>
-  <tr align="center">
-    <td style="border: 1px solid black; padding: 8px;"><span class="math inline">\(&alpha;_{2}\)</span></td>
-    <td style="border: 1px solid black; padding: 8px;">-0.0542</td>
-    <td style="border: 1px solid black; padding: 8px;">0.0796</td>
-    <td style="border: 1px solid black; padding: 8px;">-0.6808</td>
-    <td style="border: 1px solid black; padding: 8px;">0.4970</td>
-  </tr>
-</table>
-<p>The value of the maximized log-likelihood function: -370.7497 
-In table 5, we can see that intercept and first lag parameters are significantly different from zero. The parameter of the second autoregressive term is not statistically significant. Taking into account that AR(1) model with dummy for great financial crisis gave “clean” results, we can conclude that there is no
-clear evidence for the necessity of the second autoregressive term, i.e. second lag would only lead to the model being “noisy” (overfit) and, therefore, is not needed.</p>
+<pre><code>ptimization terminated successfully.
+         Current function value: 370.749724
+         Iterations: 7
+         Function evaluations: 50
+         Gradient evaluations: 10
+-----------------------------------------------------------------
+                  AR(2) MLE estimation results                   
+-----------------------------------------------------------------
+Coefficient   Estimates     Asymp.SE      t-stat       p-value   
+-----------------------------------------------------------------
+c             1.1548       0.2555           4.5205       0.0000 
+alpha_1       0.3909       0.0796           4.9086       0.0000 
+alpha_2      -0.0542       0.0796          -0.6808       0.4970 </code></pre>
+<p>The value of the maximized log-likelihood function: -370.7497. We can see that intercept and first lag parameters are significantly different from zero. The parameter of the second autoregressive term is not statistically significant. Taking into account that AR(1) model with dummy for the 2008 Financial Crisis produced “clean” results, we can conclude that there is no clear evidence for the necessity of the second autoregressive term, i.e. second lag would only lead to the model being “noisy” (overfit) and, therefore, is not needed.</p>
 
 </div>
 
